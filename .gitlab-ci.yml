@@ -1,0 +1,15 @@
+deploy-modpack:
+  image: java:8-jdk
+  stage: deploy
+  script:
+  - git clone --quiet --depth=1 https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.com/TeamFruit/fruitpacks.git repo &> /dev/null
+  - java -jar libs/launcher-builder-1.1.5-all.jar --version $(date +%Y-%m-%d-%H-%M-%S) --input ${MODPACK_NAME} --output repo/repository --manifest-dest repo/repository/${MODPACK_NAME,,}.json
+  -|
+    cd repo
+    git config --global user.name "${GITLAB_USER_NAME}"
+    git config --global user.email "${GITLAB_USER_EMAIL}"
+    git add --all
+    git commit -m "GitLabCI:${MODPACK_NAME}"
+    git push --quiet https://${PERSONAL_USERNAME}:${PERSONAL_ACCESS_TOKEN}@gitlab.com/TeamFruit/fruitpacks.git HEAD:master &> /dev/null
+  only:
+  - master

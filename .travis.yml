@@ -1,0 +1,18 @@
+language: java
+jdk: oraclejdk8
+branches:
+  only:
+  - master
+script:
+- git clone --quiet --depth=1 https://gitlab.com/TeamFruit/fruitpacks.git repo &> /dev/null
+- java -jar libs/launcher-builder-1.2.3-all.jar --version $(date +%Y-%m-%d-%H-%M-%S) --input ${MODPACK_NAME} --output repo/repository --manifest-dest repo/repository/${MODPACK_NAME,,}.json
+- |
+  cd repo
+  git config --global user.name "builds@travis-ci.com"
+  git config --global user.email "Travis CI"
+  git add --all
+  git commit -m "TravisCI:${MODPACK_NAME}"
+  git push --quiet https://${PERSONAL_USERNAME}:${PERSONAL_ACCESS_TOKEN}@gitlab.com/TeamFruit/fruitpacks.git HEAD:master &> /dev/null
+  cd ../
+notifications:
+  email: false
