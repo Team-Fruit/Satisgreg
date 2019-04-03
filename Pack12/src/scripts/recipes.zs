@@ -11,6 +11,8 @@ val sp = <ore:plateSilver>;
 val gp = <ore:plateGold>;
 val dp = <ore:plateDiamond>;
 val gl = <minecraft:glass>;
+val ds = <gregtech:gt.metaitem.01:18305>;
+val gc = <ore:circuitGood>;
 
 // recipes.removeShaped(<rftools:crafterBlock1>);
 // recipes.removeShaped(<rftools:crafterBlock2>);
@@ -46,6 +48,17 @@ recipes.remove(<MultiPageChest:multipagechest>);
 recipes.remove(<Forestry:gearBronze>);
 recipes.remove(<Forestry:gearCopper>);
 recipes.remove(<Forestry:gearTin>);
+
+recipes.addShapeless(<harvestcraft:cranberryseedItem>,[<harvestcraft:cranberryItem>]);
+recipes.addShapeless(<harvestcraft:riceseedItem>,[<harvestcraft:riceItem>]);
+recipes.addShapeless(<harvestcraft:seaweedseedItem>,[<harvestcraft:seaweedItem>]);
+
+recipes.addShaped(<powersuits:item.powerArmorHelmet>,[[ds,ds,ds],[gc,null,gc]]);
+recipes.addShaped(<powersuits:item.powerArmorChestplate>,[[ds,null,ds],[gc,ds,gc],[ds,ds,ds]]);
+recipes.addShaped(<powersuits:item.powerArmorLeggings>,[[ds,ds,ds],[gc,null,gc],[ds,null,ds]]);
+recipes.addShaped(<powersuits:item.powerArmorBoots>,[[gc,null,gc],[ds,null,ds]]);
+recipes.addShaped(<powersuits:item.powerFist>,[[null,gc,null,],[gc,ds,null],[null,ds,gc]]);
+
 
 recipes.addShaped(<IronChest:BlockIronChest>,[[ip,ip,ip], [ip,<minecraft:chest>,ip],[ip,ip,ip]]);
 
