@@ -204,6 +204,21 @@
         ],
         "exclude" : [ ]
       }
+    },
+    {
+      "properties" : {
+        "name" : "HardcoreEnderExpansion-Music",
+        "description" : "HardcoreEnderExpansionの素敵なミュージックが入っています。",
+        "recommendation" : "starred",
+        "selected" : true
+      },
+      "files" : {
+        "include" : [
+          "resources/hardcoreenderexpansion/*",
+          "mods/ResourceLoader*"
+        ],
+        "exclude" : [ ]
+      }
     }
   ],
   "userFiles" : {
